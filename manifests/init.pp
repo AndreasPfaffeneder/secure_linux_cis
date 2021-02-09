@@ -186,6 +186,11 @@ class secure_linux_cis (
     ensure  => file,
     content => $enforced_rules.join("\n")
   }
+  
+  file { '/usr/share/cis_scripts/excluded_rules.txt':
+    ensure  => file,
+    content => $exclude_rules.join("\n")
+  }
 
   include $enforced_rules
   include ::secure_linux_cis::reboot
